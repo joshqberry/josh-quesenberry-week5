@@ -1,0 +1,58 @@
+<%= form_for [@location, @event] do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+
+<!-- Note to me JQ: for some reason yet unknown to me, you can't put the following form class above
+the form_for notation or else your buttons won't register your actions. Huh. -->
+
+
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-md-offset-1 col-md-1">
+        <%= f.label :description %></div>
+        <div class="col-md-4">
+        <%= f.text_field :description, :size => 50 %>
+        </div>
+      </div>
+
+    <br>
+    <br>
+
+    <div class="form-group">
+      <div class="col-md-offset-1 col-md-1">
+        <%= f.label :date %></div>
+        <div class="col-md-4">
+        <%= f.date_field :date %></div>
+      </div>
+
+      <br>
+      <br>
+
+    <div class="col-md-offset-2 col-md-4">
+    <%= f.check_box :requires_id %>
+    <span> &nbsp; This event requires ID.</span>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="form-group">
+      <div class="col-md-offset-2">
+        &nbsp;&nbsp;&nbsp;<%= f.submit class: "btn btn-primary" %>
+        &nbsp;&nbsp;&nbsp;<%= link_to 'Cancel', locations_path, class: "btn btn-default" %></div>
+    </div>
+
+
+    <% end %>
+
+</form>

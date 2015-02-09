@@ -1,0 +1,31 @@
+</thead>
+
+
+<tbody>
+
+
+
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.description %></td>
+      <td><%= event.date %></td>
+      <td><%= event.requires_id %></td>
+      <td><%= event.location_id %></td>
+
+
+
+
+    </td>
+
+  </tr>
+
+
+
+
+
+
+  <% end %>
+
+
+</tbody>
+</table>
