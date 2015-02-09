@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JoshQuesenberryWeek5</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Let's locate an event!</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        </div>
+      </div> <!-- closes container -->
+    </nav>
+
+
+
+
+
+
+
+  <div class="container">
+
+
+    <% flash.each do |type, message| %>
+    <% if type == "notice" %>
+    <b>
+      <center>
+        <div class="alert alert-success">
+          <%= message %>
+        </div>
+      </center>
+    </b>
+    <% elsif type == "alert" %>
+    <b>
+      <center>
+        <div class="alert alert-danger">
+          <%= message %>
+        </div>
+      </center>
+    </b>
+    <% end %>
+    <% end %>
+
+
+<%= yield %>
+
+
+<hr>
+<footer>
+  <div class="row">
+
+    <div class= "col-md-6">
+      <a href="/locations">Home</a>
+    
+
+    </div>
+
+
+
+
+  </div> <!-- closes row -->
+</footer>
+
+</div> <!-- closes container -->
+
+<br>
+<br>
+
+
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+</html>

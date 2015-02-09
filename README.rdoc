@@ -1,0 +1,104 @@
+- Allow users to CRUD Locations and Events.
+- Remember to push each set of changes with a good commit message.
+- Use bootstrap to make it look like gCamp.
+- Create Buttons are blue, delete buttons are red.
+
+
+
+
+Locations Index Page:
+
+- The root of the application should be locations index.
+- Use a table to present the locations data.
+- Location name should link to the Show page for that location.
+- Create Event link takes user to page to create a new event at that location.
+
+
+Example Locations Index page:
+
+```
+link to Create Location.
+
+name      | address       | zipcode |
+Galvanize | 1062 Delaware | 80204   | Delete  | Edit  | Create Event
+Industry  | 254 Spring    | 87122   | Delete  | Edit  | Create Event
+
+```
+
+Location Show Page:
+
+- Show page for Location should list all the events at that location.
+
+Example Show Page with Events table:
+
+```
+link to Edit Location
+
+name: Galvanize
+address: 1062 Delaware
+zipcode: 80204
+
+Events:
+
+description | date       | requires_id |
+DinnerLab   | 2/15/2015  | true        | Edit  | Delete
+Denver.rb   | 2/16/2015  | false       | Edit  |
+
+```
+Edit Location Page:
+- button to Update Location
+- button to Delete Location
+
+Example:
+
+```
+name: Galvanize
+address: 1062 Delaware
+zipcode: 80204
+
+Update Location  Delete Location
+
+
+```
+Event Show Page:
+
+- Event show page shows details of the event.
+
+Example:
+
+```
+link to Edit Event
+
+name: DinnerLab
+date: 12/15/2015
+requires_id: true
+
+Delete Event
+
+```
+
+Example Event Edit Page:
+
+```
+name: DinnerLab
+date: 12/15/2015
+requires_id: true
+
+Update Event   Delete Event
+
+
+
+----------------------------------
+
+```
+- Locations have:
+  name,
+  address,
+  zipcode
+
+-Events have:
+  description,
+  date,
+  requires_id,
+  a way to link them to locations
+```
