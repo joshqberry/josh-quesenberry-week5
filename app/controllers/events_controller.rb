@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @location = Location.find(params[:location_id])
+    @events = @location.events
   end
 
   # GET /events/1
@@ -16,12 +17,13 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @location = Location.find(params[:location_id])
     @event = Event.new
+    @location = Location.find(params[:location_id])
   end
 
   # GET /events/1/edit
   def edit
+    @location = Location.find(params[:location_id])
     @event = Event.find(params[:id])
   end
 
@@ -30,10 +32,10 @@ class EventsController < ApplicationController
   def create
     @location = Location.find(params[:location_id])
     @event = Event.new(event_params)
-
+    @event.location_id = (params[:location_id])
 
       if @event.save
-        redirect_to location_event_path(@location, @event), notice: "Event was successfully created."
+        redirect_to location_path(@location), notice: "Event was successfully created."
       else
        render :new
       end
@@ -45,27 +47,28 @@ class EventsController < ApplicationController
 
 
   def update
-    respond_to do |format|
+    @event = Event.find(params[:id])
+    @location = Location.find(params[:location_id])
       if @event.update(event_params)
-        format.html { redirect_to location_event_path, notice: 'Event was successfully updated.' }
+        redirect_to location_path(@location), notice: 'Event was successfully updated.'
       else
-        format.html { render :edit }
+         render :edit
       end
     end
-  end
+
 
   # DELETE /events/1
   # DELETE /events/1.json
 
 
     def destroy
+      @location = Location.find(params[:location_id])
       @event = Event.find(params[:id])
       @event.destroy
-    respond_to do |format|
-      format.html { redirect_to locations_path, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to location_path(@location), notice: 'Event was successfully destroyed.'
+     head :no_content
     end
-  end
+
 
 
 

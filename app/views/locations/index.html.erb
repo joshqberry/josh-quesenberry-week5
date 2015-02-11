@@ -24,7 +24,7 @@
 
     <% @locations.each do |location| %>
       <tr>
-        <td><%= location.name %></td>
+        <td><%= link_to location.name, location %></td>
         <td><%= location.address %></td>
         <td><%= location.zipcode %></td>
 
@@ -32,9 +32,10 @@
         <!-- <td><%= link_to 'Show', location %></td> -->
         <td><div class="text-right">
           <%= link_to 'Edit', edit_location_path(location), class: "btn btn-info" %>
-        <%= link_to 'Destroy', location, class: "btn btn-danger", method: :delete, data:
+          &nbsp;&nbsp;<%= link_to 'Destroy', location, class: "btn btn-danger", method: :delete, data:
         { confirm: 'Are you sure?' } %>
-        <%= link_to 'Edit', edit_location_path(location), class: "btn btn-info" %>
+        &nbsp;&nbsp;<%= link_to 'See all events at this location', location_path(location), class: "btn btn-primary" %>
+        &nbsp;&nbsp;<%= link_to 'Create new event', new_location_event_path(location), class: "btn btn-info" %>
 
 
 

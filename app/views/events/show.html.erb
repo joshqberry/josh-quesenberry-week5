@@ -1,8 +1,14 @@
-<h1><%= @event.description %></h1>
-
+<h1><%= @event.description %><%= link_to 'Edit location', edit_location_event_path(@location, @event), class: "btn btn-info pull-right" %></h1>
 <hr>
 
+<dl class="dl-horizontal">
+<dt><b>Description:</b></dt>
+<dd><%= @event.description %></dd>
+<br>
+<dt><b>Date:</b></dt>
+<dd><%= @event.date %></dd>
+<br>
+  <dt><b>Is ID required?</b></dt>
+  <dd>  <%= @event.requires_id %></dd>
 
-
-<%= link_to 'Edit', edit_location_event_path(@location, @event) %> |
-<%= link_to 'Back', locations_path %>
+</dl>

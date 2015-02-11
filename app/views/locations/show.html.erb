@@ -1,8 +1,65 @@
-<h1><%= @location.name %></h1>
-
+<h1><%= @location.name %>
+<%= link_to 'Edit', edit_location_path(@location), class: "btn btn-info pull-right" %></h1>
 <hr>
 
+<dl class="dl-horizontal">
+<dt><b>Name:</b></dt>
+<dd><%= @location.name %></dd>
+<br>
+<dt><b>Address:</b></dt>
+<dd><%= @location.address %></dd>
+<br>
+  <dt><b>Zip code:</b></dt>
+  <dd>  <%= @location.zipcode %></dd>
+</dl>
 
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+
+<br>
+
+
+<table class="table table-striped">
+  <thead>
+    <h1>Events at this location:</h1>
+<hr>
+    <tr>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Is ID required?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+
+
+
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <td><%= event.requires_id %></td>
+
+
+        <td><div class="text-right">
+          <%= link_to 'Edit Event', edit_location_event_path(@location, event), class: "btn btn-info" %>
+          &nbsp;&nbsp;<%= link_to 'Destroy Event', location_event_path(@location, event), class: "btn btn-danger", method: :delete, data:
+        { confirm: 'Are you sure?' } %>
+
+
+
+        </div></td>
+
+    </tr>
+
+
+
+
+
+
+    <% end %>
+
+
+  </tbody>
+</table>

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
    root 'locations#index'
 
 
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
