@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  # before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -12,7 +12,8 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @location = Location.find(params[:location_id])
-    @event = Event.find(params[:id])
+    @events = @location.events
+    @event = @events.find(params[:id])
   end
 
   # GET /events/new
@@ -63,20 +64,22 @@ class EventsController < ApplicationController
 
     def destroy
       @location = Location.find(params[:location_id])
-      @event = Event.find(params[:id])
+      @events = @location.events
+      @event = @events.find(params[:id])
       @event.destroy
       redirect_to location_path(@location), notice: 'Event was successfully destroyed.'
-     head :no_content
     end
+
+
 
 
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+    # def set_event
+    #   @event = Event.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params

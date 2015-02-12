@@ -1,4 +1,10 @@
-<h1><%= @event.description %><%= link_to 'Edit location', edit_location_event_path(@location, @event), class: "btn btn-info pull-right" %></h1>
+<h1><%= @event.description %>
+<%= link_to 'Edit event', edit_location_event_path(@location, @event), class: "btn btn-info pull-right" %>
+<br>
+<%= link_to 'Destroy Event', location_event_path(@location, @event), class: "btn btn-danger pull-right",
+method: :delete, data: { confirm: 'Are you sure?' } %>
+</h1>
+<br>
 <hr>
 
 <dl class="dl-horizontal">

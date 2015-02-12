@@ -49,7 +49,23 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
     <div class="form-group">
       <div class="col-md-offset-2">
         &nbsp;&nbsp;&nbsp;<%= f.submit class: "btn btn-primary" %>
-        &nbsp;&nbsp;&nbsp;<%= link_to 'Cancel', locations_path, class: "btn btn-default" %></div>
+        <% if current_page?(:action => 'new') %>
+        &nbsp;&nbsp;&nbsp;<%= link_to 'Cancel', location_events_path(@location), class: "btn btn-default" %>
+        <% else %>
+        &nbsp;&nbsp;&nbsp;<%= link_to 'Destroy Event', location_event_path(@location, @event), class: "btn btn-danger", method: :delete, data:
+        { confirm: 'Are you sure?' } %>&nbsp;&nbsp;&nbsp;
+        <%= link_to 'Cancel', location_path(@location), class: "btn btn-default" %>
+
+    <% end %>
+
+
+
+
+
+
+
+
+        </div>
     </div>
 
 

@@ -1,5 +1,5 @@
 <h1><%= @location.name %>
-<%= link_to 'Edit', edit_location_path(@location), class: "btn btn-info pull-right" %></h1>
+<%= link_to 'Edit Location', edit_location_path(@location), class: "btn btn-info pull-right" %></h1>
 <hr>
 
 <dl class="dl-horizontal">
@@ -37,7 +37,7 @@
 
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.description %></td>
+        <td><%= link_to event.description, location_event_path(@location, event) %></td>
         <td><%= event.date %></td>
         <td><%= event.requires_id %></td>
 
